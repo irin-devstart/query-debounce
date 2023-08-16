@@ -1,6 +1,6 @@
 {
   "name": "@tuple-stack/query-debounce",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Pakage for query debounce",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
