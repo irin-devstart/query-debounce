@@ -1,2 +1,1 @@
-import useQueryDebounce from "./useQueryDebounce";
-export { useQueryDebounce };
+export * from "./hooks";

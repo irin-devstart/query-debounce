@@ -1,6 +1,6 @@
 {
   "name": "query-debounce",
-  "version": "1.5.0",
+  "version": "1.7.0",
   "description": "Package for query debounce",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
@@ -30,6 +30,9 @@
     "react-dom": "^18.2.0",
     "tsup": "^7.2.0",
     "typescript": "^5.1.6"
+  },
+  "peerDependencies": {
+    "react": "^16.8.0 || ^17 || ^18"
   },
   "repository": {
     "type": "git",
