@@ -1,17 +1,16 @@
 {
-  "name": "@tuple-stack/query-debounce",
-  "version": "1.1.0",
+  "name": "query-debounce",
+  "version": "1.3.0",
   "description": "Pakage for query debounce",
-  "main": "./dist/cjs/index.js",
-  "module": "./dist/esm/index.js",
-  "types": "./dist/esm/index.d.ts",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
   "publishConfig": {
     "access": "public"
   },
   "scripts": {
-    "build": "yarn build:esm && yarn build:cjs",
-    "build:esm": "tsc",
-    "build:cjs": "tsc --module commonjs --outDir dist/cjs"
+    "build": "tsup src/index.ts --format cjs,esm --dts",
+    "lint": "tsc"
   },
   "keywords": [
     "react",
@@ -23,22 +22,17 @@
   "author": "Irin Devstart",
   "license": "MIT",
   "devDependencies": {
+    "@changesets/cli": "^2.26.2",
     "@types/lodash": "^4.14.197",
     "@types/react": "^18.2.20",
     "lodash": "^4.17.21",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "tsup": "^7.2.0",
     "typescript": "^5.1.6"
-  },
-  "peerDependencies": {
-    "react": ">=16"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/tuple-stack/query-debounce.git"
-  },
-  "files": [
-    "dist",
-    "README.md"
-  ]
+  }
 }
