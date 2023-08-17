@@ -1,1 +1,2 @@
-export { default as useQueryDebounce } from "./useQueryDebounce";
+import useQueryDebounce from "./useQueryDebounce";
+export { useQueryDebounce };

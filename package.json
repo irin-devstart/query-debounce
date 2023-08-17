@@ -1,7 +1,7 @@
 {
   "name": "query-debounce",
-  "version": "1.3.0",
-  "description": "Pakage for query debounce",
+  "version": "1.5.0",
+  "description": "Package for query debounce",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
@@ -19,7 +19,7 @@
     "debounce",
     "query-debounce"
   ],
-  "author": "Irin Devstart",
+  "author": "Email <tuple.stack@gmail.com>",
   "license": "MIT",
   "devDependencies": {
     "@changesets/cli": "^2.26.2",
@@ -34,5 +34,9 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/tuple-stack/query-debounce.git"
-  }
+  },
+  "files": [
+    "dist",
+    "README.MD"
+  ]
 }
