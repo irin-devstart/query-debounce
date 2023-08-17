@@ -23,4 +23,6 @@ chache: "pnpm"
 -name: Create Realase Pull Request or Publish
 id: changesets
 uses: changesets/action@v1
+with: 
+publish: pnpm run build
 
