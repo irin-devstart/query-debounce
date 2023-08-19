@@ -1,57 +1,82 @@
-import React, { useState } from "react";
-import { debounce } from "lodash";
+import { useState, useCallback, useRef, useMemo } from "react";
+import { UseQueryDebounceOptions } from "./types";
 
-const useQueryDebounce = <T extends object>({
-  defaultValues = {},
-  wait = 500,
-}: Partial<{
-  defaultValues: Partial<T>;
-  wait: number;
-}>): {
-  getValues: () => Partial<T>;
+const useQueryDebounce = <TData = unknown>(
+  options?: Partial<UseQueryDebounceOptions<TData>>
+): {
+  getValues: () => Partial<TData>;
   setValues: (
-    key: keyof T,
-    value: Partial<T>[keyof T],
-    callback?: (value: Partial<T>) => void
+    key: keyof TData,
+    value: Partial<TData>[keyof TData],
+    callback?: (data: Partial<TData>) => void
   ) => void;
+  clearValues: (key: keyof TData | Array<keyof TData>) => void;
+  watch: (key: keyof TData) => Partial<TData>[keyof TData];
   reset: () => void;
-  watch: (key: keyof T) => Partial<T>[keyof T];
 } => {
-  const [queries, setQueries] = useState<Partial<T>>(defaultValues);
+  const initialData = useMemo(() => {
+    if (typeof options?.initialData === "function") {
+      return options?.initialData?.();
+    }
+    return options?.initialData;
+  }, [options]);
 
-  const queriesDebounce = debounce(
-    (key: keyof T, value: Partial<T>[keyof T]) => {
-      setQueries((prev) => {
-        return { ...prev, [key]: value };
-      });
+  const [data, setData] = useState<Partial<TData>>(initialData ?? {});
+  const timeout = useRef<ReturnType<typeof setTimeout>>();
+
+  const debouce = useCallback(
+    (callback: () => void) => {
+      clearTimeout(timeout.current);
+      timeout.current = setTimeout(() => {
+        callback();
+      }, options?.wait ?? 500);
     },
-    wait
+    [options?.wait]
   );
 
-  const setValues = (
-    key: keyof T,
-    value: Partial<T>[keyof T],
-    callback?: (value: Partial<T>) => void
-  ) => {
-    callback?.(queries);
-    queriesDebounce(key, value);
+  const setValues = useCallback(
+    (
+      key: keyof TData,
+      value: Partial<TData>[keyof TData],
+      callback?: (value: Partial<TData>) => void
+    ) => {
+      options?.onProgress?.("loading", options?.wait ?? 500);
+      callback?.(data);
+      debouce(() => {
+        setData((prev) => {
+          return { ...prev, [key]: value };
+        });
+        options?.onSuccess?.(data);
+        options?.onProgress?.("success");
+      });
+    },
+    [debouce, data, options]
+  );
+
+  const reset = useCallback(() => {
+    setData(initialData ?? {});
+  }, [initialData]);
+
+  const watch = (key: keyof TData) => {
+    return data[key];
   };
 
-  const reset = () => {
-    setQueries((prev) => {
-      return { ...prev, defaultValues };
+  const getValues = useCallback(() => {
+    return data;
+  }, [data]);
+
+  const clearValues = useCallback((key: keyof TData | Array<keyof TData>) => {
+    setData((prev) => {
+      if (typeof key === "object") {
+        key.forEach((key) => {
+          return { ...prev, [key]: undefined };
+        });
+      }
+      return { ...prev, [key as string]: undefined };
     });
-  };
+  }, []);
 
-  const watch = (key: keyof T) => {
-    return queries[key];
-  };
-
-  const getValues = () => {
-    return queries;
-  };
-
-  return { getValues, setValues, reset, watch };
+  return { getValues, setValues, reset, watch, clearValues };
 };
 
 export default useQueryDebounce;

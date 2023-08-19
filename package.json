@@ -1,13 +1,11 @@
 {
   "name": "query-debounce",
-  "version": "1.7.0",
+  "version": "1.8.0",
+  "private": false,
   "description": "Package for query debounce",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
-  "publishConfig": {
-    "access": "public"
-  },
   "scripts": {
     "build": "tsup src/index.ts --format cjs,esm --dts",
     "lint": "tsc"
@@ -23,9 +21,7 @@
   "license": "MIT",
   "devDependencies": {
     "@changesets/cli": "^2.26.2",
-    "@types/lodash": "^4.14.197",
     "@types/react": "^18.2.20",
-    "lodash": "^4.17.21",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "tsup": "^7.2.0",
@@ -37,9 +33,5 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/tuple-stack/query-debounce.git"
-  },
-  "files": [
-    "dist",
-    "README.MD"
-  ]
+  }
 }
