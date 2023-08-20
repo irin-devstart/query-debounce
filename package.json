@@ -1,6 +1,6 @@
 {
   "name": "query-debounce",
-  "version": "1.12.0",
+  "version": "1.13.0",
   "private": false,
   "description": "Package for query debounce",
   "main": "./dist/index.js",
