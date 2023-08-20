@@ -20,8 +20,6 @@ Query Debounce adalah hook untuk mengelola banyak inputan yang akan dibuat async
 npm install query-debounce
 ```
 
-Or
-
 ## Quickstart
 
 ```jsx
