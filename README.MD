@@ -4,10 +4,10 @@ Query Debounce adalah hook untuk mengelola banyak inputan yang akan dibuat async
 
 ## Features
 
-- Mempermudah melakukan debounce pada banyak inputan
-- Bisa memperoleh status progress perubahan loading or success
-- Bisa memperoleh value without debounce (callback pada set value)
 - Mempermudah melakukan pengontrolan proses watch, get, set dan reset dll
+- Bisa memperoleh value without debounce (callback pada set value)
+- Bisa memperoleh status progress perubahan loading or success
+- Mempermudah melakukan debounce pada banyak inputan
 - Sangat mudah dipahami
 
 ## Installation
