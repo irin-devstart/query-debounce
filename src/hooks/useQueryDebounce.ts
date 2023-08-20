@@ -1,27 +1,32 @@
 import { useState, useCallback, useRef, useMemo } from "react";
 import { UseQueryDebounceOptions } from "../types";
 
-const useQueryDebounce = <TData = unknown>(
-  options?: Partial<UseQueryDebounceOptions<TData>>
+const useQueryDebounce = <TDefaultValue = unknown>(
+  options?: Partial<UseQueryDebounceOptions<TDefaultValue>>
 ): {
-  getValues: () => Partial<TData>;
+  getValues: () => Partial<TDefaultValue>;
   setValues: (
-    key: keyof TData,
-    value: Partial<TData>[keyof TData],
-    callback?: (data: Partial<TData>) => void
+    key: keyof TDefaultValue,
+    value: Partial<TDefaultValue>[keyof TDefaultValue],
+    callback?: (data: Partial<TDefaultValue>) => void
   ) => void;
-  clearValues: (key: keyof TData | Array<keyof TData>) => void;
-  watch: (key: keyof TData) => Partial<TData>[keyof TData];
+  clearValues: (key: keyof TDefaultValue | Array<keyof TDefaultValue>) => void;
+  watch: (
+    key: keyof TDefaultValue
+  ) => Partial<TDefaultValue>[keyof TDefaultValue];
   reset: () => void;
 } => {
-  const initialData = useMemo(() => {
-    if (typeof options?.initialData === "function") {
-      return options?.initialData?.();
+  const defaultValues = useMemo(() => {
+    if (typeof options?.defaultValues === "function") {
+      return options?.defaultValues?.();
     }
-    return options?.initialData;
+    return options?.defaultValues;
   }, [options]);
 
-  const [data, setData] = useState<Partial<TData>>(initialData ?? {});
+  const [state, setState] = useState<Partial<TDefaultValue>>(
+    defaultValues ?? {}
+  );
+
   const timeout = useRef<ReturnType<typeof setTimeout>>();
 
   const debouce = useCallback(
@@ -36,45 +41,48 @@ const useQueryDebounce = <TData = unknown>(
 
   const setValues = useCallback(
     (
-      key: keyof TData,
-      value: Partial<TData>[keyof TData],
-      callback?: (value: Partial<TData>) => void
+      key: keyof TDefaultValue,
+      value: Partial<TDefaultValue>[keyof TDefaultValue],
+      callback?: (value: Partial<TDefaultValue>) => void
     ) => {
       options?.onProgress?.("loading", options?.wait ?? 500);
-      callback?.(data);
+      callback?.(state);
       debouce(() => {
-        setData((prev) => {
+        setState((prev) => {
           return { ...prev, [key]: value };
         });
-        options?.onSuccess?.(data);
+        options?.onSuccess?.(state);
         options?.onProgress?.("success");
       });
     },
-    [debouce, data, options]
+    [debouce, state, options]
   );
 
   const reset = useCallback(() => {
-    setData(initialData ?? {});
-  }, [initialData]);
+    setState(defaultValues ?? {});
+  }, [defaultValues]);
 
-  const watch = (key: keyof TData) => {
-    return data[key];
+  const watch = (key: keyof TDefaultValue) => {
+    return state[key];
   };
 
   const getValues = useCallback(() => {
-    return data;
-  }, [data]);
+    return state;
+  }, [state]);
 
-  const clearValues = useCallback((key: keyof TData | Array<keyof TData>) => {
-    setData((prev) => {
-      if (typeof key === "object") {
-        key.forEach((key) => {
-          return { ...prev, [key]: undefined };
-        });
-      }
-      return { ...prev, [key as string]: undefined };
-    });
-  }, []);
+  const clearValues = useCallback(
+    (key: keyof TDefaultValue | Array<keyof TDefaultValue>) => {
+      setState((prev) => {
+        if (Array.isArray(key)) {
+          key.forEach((key) => {
+            return { ...prev, [key]: undefined };
+          });
+        }
+        return { ...prev, [key as string]: undefined };
+      });
+    },
+    []
+  );
 
   return { getValues, setValues, reset, watch, clearValues };
 };
