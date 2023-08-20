@@ -1,5 +1,5 @@
 import { useState, useCallback, useRef, useMemo } from "react";
-import { UseQueryDebounceOptions } from "./types";
+import { UseQueryDebounceOptions } from "../types";
 
 const useQueryDebounce = <TData = unknown>(
   options?: Partial<UseQueryDebounceOptions<TData>>
