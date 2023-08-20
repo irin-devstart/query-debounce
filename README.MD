@@ -1,6 +1,6 @@
 # Query Debounce
 
-Query Debounce adalah hook untuk mengelola banyak inputan yang akan dibuat asyncronos (debounce) pada perubahan inputan sesuai waktu yang ditentukan yang bentuk object.
+Query Debounce adalah hook untuk mengelola banyak inputan yang akan dibuat asyncronos (debounce) pada perubahan inputan sesuai waktu yang ditentukan yang disimpan dalam bentuk object.
 
 ## Features
 
@@ -25,9 +25,9 @@ const App = () => {
     },
   });
 
-  console.log("Gell all values", getValues());
+  console.log("Get all values", getValues());
 
-  console.log("Gell value by key", watch("name"));
+  console.log("Get value by key", watch("name"));
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setValues("name", event.currentTarget.value);
