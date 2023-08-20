@@ -1,11 +1,14 @@
 # Query Debounce
 
-Query Debounce adalah hook untuk mengelola banyak inputan yang akan dibuat asyncronos (debounce) pada perubahan inputan sesuai waktu yang ditentukan yang disimpan dalam bentuk object.
+Query Debounce adalah hook untuk mengelola banyak inputan yang akan dibuat asyncronos (debounce) pada perubahan status inputan sesuai waktu yang ditentukan yang disimpan dalam bentuk object.
 
 ## Features
 
-- Mempermudah melakukan set, update dan delete value
-- Bisa membuat banyak inputan menggukan object
+- Mempermudah melakukan debounce pada banyak inputan
+- Bisa memperoleh status progress perubahan loading or success
+- Bisa memperoleh value without debounce (callback pada set value)
+- Mempermudah melakukan pengontrolan proses watch, get, set dan reset dll
+- Sangat mudah dipahami
 
 ## Installation
 
