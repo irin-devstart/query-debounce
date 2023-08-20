@@ -10,6 +10,9 @@ Query Debounce adalah hook untuk mengelola banyak inputan yang akan dibuat async
 - Mempermudah melakukan debounce pada banyak inputan
 - Sangat mudah dipahami
 
+[![licence](https://img.shields.io/npm/l/query-debounce)](https://www.npmjs.com/package/query-debounce)
+[![download](https://img.shields.io/npm/dm/query-debounce)](https://www.npmjs.com/package/query-debounce)
+
 ## Installation
 
 ```
