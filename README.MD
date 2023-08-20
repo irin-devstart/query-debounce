@@ -26,6 +26,7 @@ const App = () => {
       id: 0,
       name: "",
     },
+    wait: 500,
   });
 
   console.log("Get all values", getValues());
