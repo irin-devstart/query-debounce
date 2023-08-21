@@ -1,21 +1,9 @@
 import { useState, useCallback, useRef, useMemo } from "react";
-import { UseQueryDebounceOptions } from "../types";
+import { TUseQueryDebounceReturn, UseQueryDebounceOptions } from "../types";
 
 const useQueryDebounce = <TDefaultValue = unknown>(
   options?: Partial<UseQueryDebounceOptions<TDefaultValue>>
-): {
-  getValues: () => Partial<TDefaultValue>;
-  setValues: (
-    key: keyof TDefaultValue,
-    value: Partial<TDefaultValue>[keyof TDefaultValue],
-    callback?: (data: Partial<TDefaultValue>) => void
-  ) => void;
-  clearValues: (key: keyof TDefaultValue | Array<keyof TDefaultValue>) => void;
-  watch: (
-    key: keyof TDefaultValue
-  ) => Partial<TDefaultValue>[keyof TDefaultValue];
-  reset: () => void;
-} => {
+): TUseQueryDebounceReturn<TDefaultValue> => {
   const defaultValues = useMemo(() => {
     if (typeof options?.defaultValues === "function") {
       return options?.defaultValues?.();
@@ -39,7 +27,7 @@ const useQueryDebounce = <TDefaultValue = unknown>(
     [options?.wait]
   );
 
-  const setValues = useCallback(
+  const setValue = useCallback(
     (
       key: keyof TDefaultValue,
       value: Partial<TDefaultValue>[keyof TDefaultValue],
@@ -58,11 +46,24 @@ const useQueryDebounce = <TDefaultValue = unknown>(
     [debouce, state, options]
   );
 
+  const register = (key: keyof TDefaultValue) => {
+    return {
+      onChange: (event: React.ChangeEvent<HTMLInputElement>) => {
+        const { value } = event.currentTarget;
+        setValue(key, value as Partial<TDefaultValue>[keyof TDefaultValue]);
+      },
+    };
+  };
+
   const reset = useCallback(() => {
     setState(defaultValues ?? {});
   }, [defaultValues]);
 
-  const watch = (key: keyof TDefaultValue) => {
+  const watch = (
+    key: keyof TDefaultValue,
+    calback?: (data: Partial<TDefaultValue>) => void
+  ) => {
+    calback?.(state);
     return state[key];
   };
 
@@ -73,18 +74,21 @@ const useQueryDebounce = <TDefaultValue = unknown>(
   const clearValues = useCallback(
     (key: keyof TDefaultValue | Array<keyof TDefaultValue>) => {
       setState((prev) => {
+        const tempValues = { ...prev };
         if (Array.isArray(key)) {
           key.forEach((key) => {
-            return { ...prev, [key]: undefined };
+            tempValues[key] = undefined;
           });
+          return tempValues;
         }
-        return { ...prev, [key as string]: undefined };
+        tempValues[key] = undefined;
+        return tempValues;
       });
     },
     []
   );
 
-  return { getValues, setValues, reset, watch, clearValues };
+  return { getValues, setValue, reset, register, watch, clearValues };
 };
 
 export default useQueryDebounce;
