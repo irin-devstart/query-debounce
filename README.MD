@@ -1,6 +1,6 @@
 # Query Debounce
 
-Query Debounce merupakan custom hook untuk memudahkan menagement banyak inputan yang bisa didebounce dengan berupa object, sehingga mempermudah untuk memanage banyak query params untuk menghindari pemanggilan berulang yang tidak diperlukan pada server (API).
+Query Debounce is a custom hook designed to facilitate the management of multiple inputs that can be debounced in the form of an object, making it easier to manage numerous query parameters to avoid unnecessary repeated calls to the server (API).
 
 [![licence](https://img.shields.io/npm/l/query-debounce)](https://www.npmjs.com/package/query-debounce)
 [![minzip](https://img.shields.io/bundlephobia/minzip/query-debounce)](https://www.npmjs.com/package/query-debounce)
@@ -8,10 +8,10 @@ Query Debounce merupakan custom hook untuk memudahkan menagement banyak inputan 
 
 ## Features
 
-- Mempermudah melakukan debounce pada banyak inputan (state object)
-- Bisa memperoleh value without debounce (callback pada set value)
-- Bisa memperoleh status progress perubahan loading or success
-- Tersedia returns untuk set, get, watch, clear, register.
+- Facilitates debouncing for multiple inputs (state object).
+- Can retrieve values without debounce (callback on set value).
+- Provides progress status for change, loading, or success.
+- Returns are available for set, get, watch, clear, and register.
 
 ## Installation
 
@@ -38,7 +38,7 @@ const App = () => {
 
   return (
     <div>
-      <label htmlFor="name">Name:</label>
+      <label htmlFor="name">Name: </label>
       <input id="name" type="text" {...register("name")} />
     </div>
   );
@@ -48,30 +48,98 @@ export default App;
 
 ## Documentation
 
-### useQueryDebounce: (options) => returns
+### `useQueryDebounce: <TDefaultValue>(options?: Partial<UseQueryDebounceOptions<TDefaultValue>>) => TUseQueryDebounceReturn<TDefaultValue>`
 
-Query Debounce merupakan custom hook untuk membuat debounce state.
+Query Debounce is a custom hook for creating debounced states.
 
 ### Options
 
-#### `defaultValues`
+The options for `useQueryDebounce` are as follows:
 
-#### `onProgress`
+#### `defaultValues:  Partial<TDefaultValue> | (() => Partial<TDefaultValue> | undefined)`
 
-#### `onSuccess`
+`defaultValues` is used to set default values for an object or a function that returns data.
 
-#### `wait`
+#### `onProgress: (status?: "loading" | "success", totalTimer?: number) => void`
+
+`onProgress` is used to capture the progress during the debounce wait process.
+
+##### Props:
+
+- **status: "loading" | "success"**
+  Fetching the value of progress status.
+- **totalTimer"**
+  Fetching the total wait timer.
+
+#### `onSuccess: (data: Partial<TDefaultValue>) => void`
+
+`onSuccess` will be called when the setValue process succeeds.
+
+##### Props
+
+- **data: Partial<TDefaultValue>**
+  Fetching data in the form of an object.
+
+#### `wait: number`
+
+`wait` is used to set the waiting time before the setValue is executed.
 
 ### Returns
 
-#### `getValues`
+The return from `useQueryDebounce` is as follows:
 
-#### `setValue`
+#### `getValues: () => Partial<TDefaultValue>`
 
-#### `clearValues`
+`getValues` is used to fetch all values of the object.
 
-#### `register`
+#### `setValue: (key: keyof TDefaultValue, value: Partial<TDefaultValue>[keyof TDefaultValue], callback?: (data: Partial<TDefaultValue>) => void) => void`
 
-#### `watch`
+`setValue` is used to set a value.
 
-#### `reset`
+##### Props
+
+- **key: keyof TDefaultValue**
+  key is the key of the object for which you want to set a value.
+- **value: Partial<TDefaultValue>[keyof TDefaultValue]**
+  value is the value you want to set according to the key.
+- **callback?: (data: Partial<TDefaultValue>) => void**
+  callback is used to fetch all values before setting a new value.
+
+#### `clearValues: (key: keyof TDefaultValue | Array<keyof TDefaultValue>) => void`
+
+`clearValues` is used to delete values that have been stored based on the key.
+
+##### Props
+
+- **key: keyof TDefaultValue | Array<keyof TDefaultValue>**
+  key is the key of the object that you want to delete.
+
+#### `register: (key: keyof TDefaultValue) => { onChange:  (event: React.ChangeEvent<HTMLInputElement>) => void}`
+
+`register` is used to associate this registration with the returned onChange object for the registered input
+
+##### Props
+
+- **key: keyof TDefaultValue>**
+  key is the key of the object you want to register.
+
+##### Return
+
+- **onChange: (event: React.ChangeEvent<HTMLInputElement>) => void**
+  onChange is used to perform a value change
+
+#### `watch: ( key: keyof TDefaultValue, calback?: ((data: Partial<TDefaultValue>) => void) | undefined) => Partial<TDefaultValue>[keyof TDefaultValue]`
+
+watch is used to fetch values based on the key.
+
+##### Props
+
+- **key: keyof TDefaultValue>**
+  key is the key of the object you want to retrieve.
+
+- **calback?: ((data: Partial<TDefaultValue>) => void) | undefined)**
+  callback is used to fetch all values within the watch function.
+
+#### `reset: () => void`
+
+`reset` is used to reset the value to the default values.
