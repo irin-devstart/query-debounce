@@ -56,7 +56,9 @@ Query Debounce is a custom hook for creating debounced states.
 
 The options for `useQueryDebounce` are as follows:
 
-#### `#000000` `defaultValues: DefaultValue | () => TDefaultValue>`
+<hr style="border:1px solid #EFF1F3">
+
+#### `defaultValues: DefaultValue | () => TDefaultValue>`
 
 `defaultValues` is used to set default values for an object or a function that returns data.
 
