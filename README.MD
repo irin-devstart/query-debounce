@@ -48,7 +48,7 @@ export default App;
 
 ## Documentation
 
-### `useQueryDebounce: <TDefaultValue>(options?: Partial<UseQueryDebounceOptions<TDefaultValue>>) => TUseQueryDebounceReturn<TDefaultValue>`
+### `useQueryDebounce: (options) => Return`
 
 Query Debounce is a custom hook for creating debounced states.
 
@@ -56,26 +56,26 @@ Query Debounce is a custom hook for creating debounced states.
 
 The options for `useQueryDebounce` are as follows:
 
-#### `defaultValues:  Partial<TDefaultValue> | (() => Partial<TDefaultValue> | undefined)`
+#### `defaultValues:  DefaultValue | () => TDefaultValue>`
 
 `defaultValues` is used to set default values for an object or a function that returns data.
 
-#### `onProgress: (status?: "loading" | "success", totalTimer?: number) => void`
+#### `onProgress: (status, totalTimer) => void`
 
 `onProgress` is used to capture the progress during the debounce wait process.
 
-##### Props:
+#### Props:
 
-- **status: "loading" | "success"**
+- **status: loading | success**
   Fetching the value of progress status.
-- **totalTimer"**
+- **totalTimer**
   Fetching the total wait timer.
 
-#### `onSuccess: (data: Partial<TDefaultValue>) => void`
+#### `onSuccess: (data) => void`
 
 `onSuccess` will be called when the setValue process succeeds.
 
-##### Props
+#### Props
 
 - **data: Partial<TDefaultValue>**
   Fetching data in the form of an object.
@@ -92,11 +92,11 @@ The return from `useQueryDebounce` is as follows:
 
 `getValues` is used to fetch all values of the object.
 
-#### `setValue: (key: keyof TDefaultValue, value: Partial<TDefaultValue>[keyof TDefaultValue], callback?: (data: Partial<TDefaultValue>) => void) => void`
+#### `setValue: (key, value, callback) => void`
 
 `setValue` is used to set a value.
 
-##### Props
+#### Props
 
 - **key: keyof TDefaultValue**
   key is the key of the object for which you want to set a value.
@@ -105,20 +105,20 @@ The return from `useQueryDebounce` is as follows:
 - **callback?: (data: Partial<TDefaultValue>) => void**
   callback is used to fetch all values before setting a new value.
 
-#### `clearValues: (key: keyof TDefaultValue | Array<keyof TDefaultValue>) => void`
+#### `clearValues: (key) => void`
 
 `clearValues` is used to delete values that have been stored based on the key.
 
-##### Props
+#### Props
 
 - **key: keyof TDefaultValue | Array<keyof TDefaultValue>**
   key is the key of the object that you want to delete.
 
-#### `register: (key: keyof TDefaultValue) => { onChange:  (event: React.ChangeEvent<HTMLInputElement>) => void}`
+#### `register: (key) => { onChange}`
 
 `register` is used to associate this registration with the returned onChange object for the registered input
 
-##### Props
+#### Props
 
 - **key: keyof TDefaultValue>**
   key is the key of the object you want to register.
@@ -128,11 +128,11 @@ The return from `useQueryDebounce` is as follows:
 - **onChange: (event: React.ChangeEvent<HTMLInputElement>) => void**
   onChange is used to perform a value change
 
-#### `watch: ( key: keyof TDefaultValue, calback?: ((data: Partial<TDefaultValue>) => void) | undefined) => Partial<TDefaultValue>[keyof TDefaultValue]`
+#### `watch: (key, calback) => void`
 
 watch is used to fetch values based on the key.
 
-##### Props
+#### Props
 
 - **key: keyof TDefaultValue>**
   key is the key of the object you want to retrieve.
