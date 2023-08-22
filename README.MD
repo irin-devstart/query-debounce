@@ -1,6 +1,6 @@
 # Query Debounce
 
-Query Debounce adalah hook untuk mengelola banyak inputan yang akan dibuat asyncronos (debounce) pada perubahan status inputan sesuai waktu yang ditentukan yang disimpan dalam bentuk object.
+Query Debounce merupakan hook untuk memudahkan menagement banyak inputan yang bisa didebounce dengan berupa object, sehingga mempermudah untuk memanage banyak query params untuk menghindari pemanggilan berulang yang tidak diperlukan pada server (API).
 
 [![licence](https://img.shields.io/npm/l/query-debounce)](https://www.npmjs.com/package/query-debounce)
 [![minzip](https://img.shields.io/bundlephobia/minzip/query-debounce)](https://www.npmjs.com/package/query-debounce)
@@ -8,11 +8,10 @@ Query Debounce adalah hook untuk mengelola banyak inputan yang akan dibuat async
 
 ## Features
 
-- Mempermudah melakukan pengontrolan proses watch, get, set dan reset dll
+- Mempermudah melakukan debounce pada banyak inputan (state object)
 - Bisa memperoleh value without debounce (callback pada set value)
 - Bisa memperoleh status progress perubahan loading or success
-- Mempermudah melakukan debounce pada banyak inputan
-- Sangat mudah dipahami
+- Tersedia returns untuk set, get, watch, clear, register.
 
 ## Installation
 
@@ -25,7 +24,7 @@ npm install query-debounce
 ```jsx
 import { useQueryDebounce } from "query-debounce";
 const App = () => {
-  const { setValues, getValues, watch } = useQueryDebounce({
+  const { register, getValues, watch } = useQueryDebounce({
     defaultValues: {
       id: 0,
       name: "",
@@ -37,19 +36,30 @@ const App = () => {
 
   console.log("Get value by key", watch("name"));
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setValues("name", event.currentTarget.value);
-  };
-
   return (
     <div>
-      <label htmlFor="name">Name</label>
-      <input id="name" type="text" onChange={handleChange} />
+      <label htmlFor="name">Name:</label>
+      <input id="name" type="text" {...register("name")} />
     </div>
   );
 };
+export default App;
 ```
 
 ## Documentation
 
-On progress
+### Options
+
+- `** defaultValues **`
+- `** onProgress **`
+- `** onSuccess **`
+- `** wait **`
+
+### Returns
+
+- `** getValues **`
+- `** setValue **`
+- `** clearValues **`
+- `** register **`
+- `** watch **`
+- `** reset **`
