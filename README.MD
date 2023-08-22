@@ -68,7 +68,7 @@ The options for `useQueryDebounce` are as follows:
 
 ##### `status: loading | success`
 
-&emsp; Fetching the value of progress status.
+Fetching the value of progress status.
 
 ##### `totalTimer`
 
