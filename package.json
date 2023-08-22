@@ -1,8 +1,8 @@
 {
   "name": "query-debounce",
-  "version": "1.17.0",
+  "version": "1.18.0",
   "private": false,
-  "description": "Package for query debounce",
+  "description": "Query Debounce is a custom hook designed to facilitate the management of multiple inputs that can be debounced",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
@@ -35,6 +35,8 @@
     "url": "git+https://github.com/tuple-stack/query-debounce.git"
   },
   "files": [
-    "dist/**/*"
+    "dist",
+    "LICENSE",
+    "README.md"
   ]
 }

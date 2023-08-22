@@ -58,7 +58,7 @@ The options for `useQueryDebounce` are as follows:
 
 ---
 
-#### `defaultValues: DefaultValue | () => TDefaultValue>`
+#### `defaultValues: DefaultValue | () => TDefaultValue`
 
 `defaultValues` is used to set default values for an object or a function that returns data.
 
@@ -86,7 +86,7 @@ Fetching the total wait timer.
 
 #### Props
 
-##### `data: Partial<TDefaultValue>`
+##### `data: TDefaultValue`
 
 Fetching data in the form of an object.
 
@@ -104,7 +104,7 @@ The return from `useQueryDebounce` is as follows:
 
 ---
 
-#### `getValues: () => Partial<TDefaultValue>`
+#### `getValues: () => TDefaultValue`
 
 `getValues` is used to fetch all values of the object.
 
@@ -148,7 +148,7 @@ key is the key of the object that you want to delete.
 
 #### Props
 
-##### `key: keyof TDefaultValue>`
+##### `key: keyof TDefaultValue`
 
 key is the key of the object you want to register.
 
@@ -166,7 +166,7 @@ watch is used to fetch values based on the key.
 
 #### Props
 
-##### `key: keyof TDefaultValue>`
+##### `key: keyof TDefaultValue`
 
 key is the key of the object you want to retrieve.
 
