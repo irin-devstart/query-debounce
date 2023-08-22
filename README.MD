@@ -1,6 +1,6 @@
 # Query Debounce
 
-Query Debounce merupakan hook untuk memudahkan menagement banyak inputan yang bisa didebounce dengan berupa object, sehingga mempermudah untuk memanage banyak query params untuk menghindari pemanggilan berulang yang tidak diperlukan pada server (API).
+Query Debounce merupakan custom hook untuk memudahkan menagement banyak inputan yang bisa didebounce dengan berupa object, sehingga mempermudah untuk memanage banyak query params untuk menghindari pemanggilan berulang yang tidak diperlukan pada server (API).
 
 [![licence](https://img.shields.io/npm/l/query-debounce)](https://www.npmjs.com/package/query-debounce)
 [![minzip](https://img.shields.io/bundlephobia/minzip/query-debounce)](https://www.npmjs.com/package/query-debounce)
@@ -48,18 +48,30 @@ export default App;
 
 ## Documentation
 
+### useQueryDebounce: (options) => returns
+
+Query Debounce merupakan custom hook untuk membuat debounce state.
+
 ### Options
 
-- **`defaultValues  `**
-- **`onProgress  `**
-- **`onSuccess  `**
-- **`wait  `**
+#### `defaultValues`
+
+#### `onProgress`
+
+#### `onSuccess`
+
+#### `wait`
 
 ### Returns
 
-- **`getValues  `**
-- **`setValue  `**
-- **`clearValues  `**
-- **`register  `**
-- **`watch  `**
-- **`reset  `**
+#### `getValues`
+
+#### `setValue`
+
+#### `clearValues`
+
+#### `register`
+
+#### `watch`
+
+#### `reset`
