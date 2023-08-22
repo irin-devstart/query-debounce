@@ -50,7 +50,7 @@ export default App;
 
 ### `useQueryDebounce: (options) => Return`
 
-## Query Debounce is a custom hook for creating debounced states.
+Query Debounce is a custom hook for creating debounced states.
 
 ### Options
 
@@ -76,7 +76,9 @@ Fetching the value of progress status.
 
 ##### `totalTimer`
 
-## Fetching the total wait timer.
+Fetching the total wait timer.
+
+---
 
 #### `onSuccess: (data) => void`
 
@@ -86,19 +88,27 @@ Fetching the value of progress status.
 
 ##### `data: Partial<TDefaultValue>`
 
-## Fetching data in the form of an object.
+Fetching data in the form of an object.
+
+---
 
 #### `wait: number`
 
-## `wait` is used to set the waiting time before the setValue is executed.
+`wait` is used to set the waiting time before the setValue is executed.
+
+---
 
 ### Returns
 
-## The return from `useQueryDebounce` is as follows:
+The return from `useQueryDebounce` is as follows:
+
+---
 
 #### `getValues: () => Partial<TDefaultValue>`
 
-## `getValues` is used to fetch all values of the object.
+`getValues` is used to fetch all values of the object.
+
+---
 
 #### `setValue: (key, value, callback) => void`
 
@@ -116,7 +126,9 @@ value is the value you want to set according to the key.
 
 ##### `callback?: (data: Partial<TDefaultValue>) => void`
 
-## callback is used to fetch all values before setting a new value.
+callback is used to fetch all values before setting a new value.
+
+---
 
 #### `clearValues: (key) => void`
 
@@ -126,7 +138,9 @@ value is the value you want to set according to the key.
 
 ##### `key: keyof TDefaultValue | Array<keyof TDefaultValue>`
 
-## key is the key of the object that you want to delete.
+key is the key of the object that you want to delete.
+
+---
 
 #### `register: (key) => { onChange}`
 
@@ -142,7 +156,9 @@ key is the key of the object you want to register.
 
 ##### `onChange: (event: React.ChangeEvent<HTMLInputElement>) => void`
 
-## onChange is used to perform a value change
+onChange is used to perform a value change
+
+---
 
 #### `watch: (key, calback) => void`
 
@@ -156,7 +172,9 @@ key is the key of the object you want to retrieve.
 
 ##### `calback?: ((data: Partial<TDefaultValue>) => void) | undefined)`
 
-## callback is used to fetch all values within the watch function.
+callback is used to fetch all values within the watch function.
+
+---
 
 #### `reset: () => void`
 
