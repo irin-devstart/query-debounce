@@ -2,7 +2,7 @@
 
 Query Debounce is a custom hook designed to facilitate the management of multiple inputs that can be debounced in the form of an object, making it easier to manage numerous query parameters to avoid unnecessary repeated calls to the server (API).
 
-[![licence](https://img.shields.io/npm/l/query-debounce)](https://www.npmjs.com/package/query-debounce)
+[![licence](https://img.shields.io/npm/l/query-debounce)](https://github.com/tuple-stack/query-debounce/blob/master/README.MD)
 [![minzip](https://img.shields.io/bundlephobia/minzip/query-debounce)](https://www.npmjs.com/package/query-debounce)
 [![npm downloads](https://img.shields.io/npm/dm/query-debounce)](https://www.npmjs.com/package/query-debounce)
 
@@ -179,3 +179,5 @@ callback is used to fetch all values within the watch function.
 #### `reset: () => void`
 
 `reset` is used to reset the value to the default values.
+
+# Good luck, have fun!
