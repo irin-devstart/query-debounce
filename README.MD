@@ -54,6 +54,8 @@ Query Debounce is a custom hook for creating debounced states.
 
 ### Options
 
+---
+
 The options for `useQueryDebounce` are as follows:
 
 #### `defaultValues:  DefaultValue | () => TDefaultValue>`
@@ -85,6 +87,8 @@ The options for `useQueryDebounce` are as follows:
 `wait` is used to set the waiting time before the setValue is executed.
 
 ### Returns
+
+---
 
 The return from `useQueryDebounce` is as follows:
 
