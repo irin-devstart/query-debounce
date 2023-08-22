@@ -50,16 +50,16 @@ export default App;
 
 ### Options
 
-- `** defaultValues **`
-- `** onProgress **`
-- `** onSuccess **`
-- `** wait **`
+- `* defaultValues *`
+- `* onProgress *`
+- `* onSuccess *`
+- `* wait *`
 
 ### Returns
 
-- `** getValues **`
-- `** setValue **`
-- `** clearValues **`
-- `** register **`
-- `** watch **`
-- `** reset **`
+- `* getValues *`
+- `* setValue *`
+- `* clearValues *`
+- `* register *`
+- `* watch *`
+- `* reset *`
