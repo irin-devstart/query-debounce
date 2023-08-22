@@ -56,35 +56,35 @@ Query Debounce is a custom hook for creating debounced states.
 
 The options for `useQueryDebounce` are as follows:
 
-#### `* defaultValues: DefaultValue | () => TDefaultValue>`
+#### `- defaultValues: DefaultValue | () => TDefaultValue>`
 
 `defaultValues` is used to set default values for an object or a function that returns data.
 
-#### `* onProgress: (status, totalTimer) => void`
+#### `- onProgress: (status, totalTimer) => void`
 
 `onProgress` is used to capture the progress during the debounce wait process.
 
 #### Props
 
-##### `* status: loading | success`
+##### `- status: loading | success`
 
 Fetching the value of progress status.
 
-##### `* totalTimer`
+##### `- totalTimer`
 
 Fetching the total wait timer.
 
-#### `* onSuccess: (data) => void`
+#### `- onSuccess: (data) => void`
 
 `onSuccess` will be called when the setValue process succeeds.
 
 #### Props
 
-##### `* data: Partial<TDefaultValue>`
+##### `- data: Partial<TDefaultValue>`
 
 Fetching data in the form of an object.
 
-#### `* wait: number`
+#### `- wait: number`
 
 `wait` is used to set the waiting time before the setValue is executed.
 
@@ -92,68 +92,68 @@ Fetching data in the form of an object.
 
 The return from `useQueryDebounce` is as follows:
 
-#### `* getValues: () => Partial<TDefaultValue>`
+#### `- getValues: () => Partial<TDefaultValue>`
 
 `getValues` is used to fetch all values of the object.
 
-#### `* setValue: (key, value, callback) => void`
+#### `- setValue: (key, value, callback) => void`
 
 `setValue` is used to set a value.
 
 #### Props
 
-##### `* key: keyof TDefaultValue`
+##### `- key: keyof TDefaultValue`
 
 key is the key of the object for which you want to set a value.
 
-##### `* value: Partial<TDefaultValue>[keyof TDefaultValue]`
+##### `- value: Partial<TDefaultValue>[keyof TDefaultValue]`
 
 value is the value you want to set according to the key.
 
-##### `* callback?: (data: Partial<TDefaultValue>) => void`
+##### `- callback?: (data: Partial<TDefaultValue>) => void`
 
 callback is used to fetch all values before setting a new value.
 
-#### `* clearValues: (key) => void`
+#### `- clearValues: (key) => void`
 
 `clearValues` is used to delete values that have been stored based on the key.
 
 #### Props
 
-##### `* key: keyof TDefaultValue | Array<keyof TDefaultValue>`
+##### `- key: keyof TDefaultValue | Array<keyof TDefaultValue>`
 
 key is the key of the object that you want to delete.
 
-#### `* register: (key) => { onChange}`
+#### `- register: (key) => { onChange}`
 
 `register` is used to associate this registration with the returned onChange object for the registered input
 
 #### Props
 
-##### `* key: keyof TDefaultValue>`
+##### `- key: keyof TDefaultValue>`
 
 key is the key of the object you want to register.
 
-##### `* Return`
+##### `- Return`
 
-##### `* onChange: (event: React.ChangeEvent<HTMLInputElement>) => void`
+##### `- onChange: (event: React.ChangeEvent<HTMLInputElement>) => void`
 
 onChange is used to perform a value change
 
-#### `* watch: (key, calback) => void`
+#### `- watch: (key, calback) => void`
 
 watch is used to fetch values based on the key.
 
 #### Props
 
-##### `* key: keyof TDefaultValue>`
+##### `- key: keyof TDefaultValue>`
 
 key is the key of the object you want to retrieve.
 
-##### `* calback?: ((data: Partial<TDefaultValue>) => void) | undefined)`
+##### `- calback?: ((data: Partial<TDefaultValue>) => void) | undefined)`
 
 callback is used to fetch all values within the watch function.
 
-#### `* reset: () => void`
+#### `- reset: () => void`
 
 `reset` is used to reset the value to the default values.
