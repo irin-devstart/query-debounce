@@ -26,8 +26,8 @@ import { useQueryDebounce } from "query-debounce";
 const App = () => {
   const { register, getValues, watch } = useQueryDebounce({
     defaultValues: {
-      id: 0,
       name: "",
+      status: "",
     },
     wait: 500,
   });
@@ -38,11 +38,14 @@ const App = () => {
 
   return (
     <div>
-      <label htmlFor="name">Name: </label>
+      <label htmlFor="name">Name:</label>
       <input id="name" type="text" {...register("name")} />
+      <label htmlFor="status">status:</label>
+      <input id="status" type="text" {...register("status")} />
     </div>
   );
 };
+
 export default App;
 ```
 
@@ -94,7 +97,7 @@ Fetching data in the form of an object.
 
 #### `wait: number`
 
-`wait` is used to set the waiting time before the setValue is executed.
+`wait` is used to set the waiting time before the setValue is executed, `default value: 500ms`.
 
 ---
 
