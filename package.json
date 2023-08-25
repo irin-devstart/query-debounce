@@ -12,10 +12,15 @@
   },
   "keywords": [
     "react",
-    "typescript",
     "query",
+    "typescript",
+    "filter",
+    "params",
     "debounce",
-    "query-debounce"
+    "query debounce",
+    "filter debounce",
+    "query params debounce",
+    "filter query params debounce"
   ],
   "author": "Email <tuple.stack@gmail.com>",
   "license": "MIT",
