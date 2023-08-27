@@ -71,6 +71,19 @@ const useQueryDebounce = <TDefaultValue = unknown>(
     return state;
   }, [state]);
 
+  const getValidValues = useCallback(() => {
+    let tempValues = {};
+    Object.keys(state).forEach((key) => {
+      if (state[key as keyof Partial<TDefaultValue>]) {
+        tempValues = {
+          ...tempValues,
+          [key]: state[key as keyof Partial<TDefaultValue>],
+        };
+      }
+    });
+    return tempValues;
+  }, [state]);
+
   const clearValues = useCallback(
     (key: keyof TDefaultValue | Array<keyof TDefaultValue>) => {
       setState((prev) => {
@@ -88,7 +101,15 @@ const useQueryDebounce = <TDefaultValue = unknown>(
     []
   );
 
-  return { getValues, setValue, reset, register, watch, clearValues };
+  return {
+    getValues,
+    getValidValues,
+    setValue,
+    reset,
+    register,
+    watch,
+    clearValues,
+  };
 };
 
 export default useQueryDebounce;

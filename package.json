@@ -1,6 +1,6 @@
 {
   "name": "query-debounce",
-  "version": "1.20.1",
+  "version": "2.0.0",
   "private": false,
   "description": "Query Debounce is a custom hook designed to facilitate the management of multiple inputs that can be debounced",
   "main": "./dist/index.js",
@@ -25,7 +25,6 @@
   "author": "Email <tuple.stack@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "@changesets/cli": "^2.26.2",
     "@types/react": "^18.2.20",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

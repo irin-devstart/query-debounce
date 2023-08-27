@@ -24,7 +24,7 @@ npm install query-debounce
 ```jsx
 import { useQueryDebounce } from "query-debounce";
 const App = () => {
-  const { register, getValues, watch } = useQueryDebounce({
+  const { register, getValues, getValidValues, watch } = useQueryDebounce({
     defaultValues: {
       name: "",
       status: "",
@@ -32,9 +32,12 @@ const App = () => {
     wait: 500,
   });
 
-  console.log("Get all values", getValues());
-
-  console.log("Get value by key", watch("name"));
+  // Get all values
+  console.log(getValues());
+  // Get all valid values
+  console.log(getValidValues());
+  // Get value by key
+  console.log(watch("name"));
 
   return (
     <div>
@@ -110,6 +113,12 @@ The return from `useQueryDebounce` is as follows:
 #### `getValues: () => TDefaultValue`
 
 `getValues` is used to fetch all values of the object.
+
+---
+
+#### `getValidValues: () => Record<string, never>`
+
+`getValidValues` is used to fetch all valid values of the object.
 
 ---
 

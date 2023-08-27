@@ -9,6 +9,7 @@ export interface UseQueryDebounceOptions<TDefaultValue> {
 
 export interface TUseQueryDebounceReturn<TDefaultValue> {
   getValues: () => Partial<TDefaultValue>;
+  getValidValues: () => Record<string, never>;
   setValue: (
     key: keyof TDefaultValue,
     value: Partial<TDefaultValue>[keyof TDefaultValue],
