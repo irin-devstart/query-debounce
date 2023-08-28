@@ -116,7 +116,7 @@ The return from `useQueryDebounce` is as follows:
 
 ---
 
-#### `getValidValues: () => Record<string, never>`
+#### `getValidValues: () => Partial<TDefaultValue>`
 
 `getValidValues` is used to fetch all valid values of the object.
 

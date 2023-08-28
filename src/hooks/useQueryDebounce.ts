@@ -72,7 +72,7 @@ const useQueryDebounce = <TDefaultValue = unknown>(
   }, [state]);
 
   const getValidValues = useCallback(() => {
-    let tempValues = {};
+    let tempValues: Partial<TDefaultValue> = {};
     Object.keys(state).forEach((key) => {
       if (state[key as keyof Partial<TDefaultValue>]) {
         tempValues = {
