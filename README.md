@@ -62,15 +62,10 @@ Query Debounce is a custom hook for creating debounced states.
 
 The options for `useQueryDebounce` are as follows:
 
-| Options       | Props              |
-| ------------- | ------------------ |
-| defaultValues | -                  |
-| onProgress    | status, totalTimer |
-| onSuccess     | data               |
-| wait          | -                  |
-| defaultValues | -                  |
-| defaultValues | -                  |
-| defaultValues | -                  |
+- **defaultValues**
+- **onProgress**
+- **onSuccess**
+- **wait**
 
 ---
 
@@ -118,16 +113,14 @@ Fetching data in the form of an object.
 
 The return from `useQueryDebounce` is as follows:
 
-| Returns        | Props                |
-| -------------- | -------------------- |
-| getValues      | -                    |
-| getValidValues | -                    |
-| setValue       | key, value, callback |
-| setBulkValues  | values, callback     |
-| clearValues    | key or key[]         |
-| register       | key                  |
-| watch          | key                  |
-| reset          | key                  |
+- **getValues**
+- **getValidValues**
+- **setValue**
+- **setBulkValues**
+- **clearValues**
+- **register**
+- **watch**
+- **reset**
 
 ---
 
