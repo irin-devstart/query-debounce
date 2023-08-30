@@ -15,6 +15,10 @@ export interface TUseQueryDebounceReturn<TDefaultValue> {
     value: Partial<TDefaultValue>[keyof TDefaultValue],
     callback?: (data: Partial<TDefaultValue>) => void
   ) => void;
+  setBulkValues: (
+    values: Partial<TDefaultValue>,
+    callback?: ((value: Partial<TDefaultValue>) => void) | undefined
+  ) => void;
   clearValues: (key: keyof TDefaultValue | Array<keyof TDefaultValue>) => void;
   register: (key: keyof TDefaultValue) => {
     onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;

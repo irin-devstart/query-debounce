@@ -11,7 +11,7 @@ Query Debounce is a custom hook designed to facilitate the management of multipl
 - Facilitates debouncing for multiple inputs (state object).
 - Can retrieve values without debounce (callback on set value).
 - Provides progress status for change, loading, or success.
-- Returns are available for set, get, watch, clear, and register.
+- Returns are available for set, set bulk, get, watch, clear, and register.
 
 ## Installation
 
@@ -135,6 +135,22 @@ key is the key of the object for which you want to set a value.
 ##### `value: Partial<TDefaultValue>[keyof TDefaultValue]`
 
 value is the value you want to set according to the key.
+
+##### `callback?: (data: Partial<TDefaultValue>) => void`
+
+callback is used to fetch all values before setting a new value.
+
+---
+
+#### `setBulkValues: (values, callback) => void`
+
+`setBulkValues` is used to set multiple values at once.
+
+#### Props
+
+##### `values: Partial<TDefaultValue>`
+
+values is the object for which you want to set the bulk values.
 
 ##### `callback?: (data: Partial<TDefaultValue>) => void`
 

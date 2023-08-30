@@ -46,6 +46,24 @@ const useQueryDebounce = <TDefaultValue = unknown>(
     [debouce, state, options]
   );
 
+  const setBulkValues = useCallback(
+    (
+      values: Partial<TDefaultValue>,
+      callback?: (value: Partial<TDefaultValue>) => void
+    ) => {
+      options?.onProgress?.("loading", options?.wait ?? 500);
+      callback?.(state);
+      debouce(() => {
+        setState((prev) => {
+          return { ...prev, ...values };
+        });
+        options?.onSuccess?.(state);
+        options?.onProgress?.("success");
+      });
+    },
+    [debouce, state, options]
+  );
+
   const register = (key: keyof TDefaultValue) => {
     return {
       onChange: (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -105,6 +123,7 @@ const useQueryDebounce = <TDefaultValue = unknown>(
     getValues,
     getValidValues,
     setValue,
+    setBulkValues,
     reset,
     register,
     watch,
