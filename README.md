@@ -20,6 +20,18 @@ Query Debounce is a custom hook designed to facilitate the management of multipl
 npm install query-debounce
 ```
 
+or
+
+```
+yarn add query-debounce
+```
+
+or
+
+```
+pnpm add query-debounce
+```
+
 ## Quickstart
 
 ```jsx
@@ -63,10 +75,19 @@ Query Debounce is a custom hook for creating debounced states.
 
 The options for `useQueryDebounce` are as follows:
 
-- **defaultValues**
-- **onProgress**
-- **onSuccess**
-- **wait**
+- defaultValues
+
+---
+
+- onProgress
+
+---
+
+- onSuccess
+
+---
+
+- wait
 
 ---
 
