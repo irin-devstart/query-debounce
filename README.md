@@ -75,13 +75,13 @@ Query Debounce is a custom hook for creating debounced states.
 
 The options for `useQueryDebounce` are as follows:
 
-#### \* defaultValues
+#### • defaultValues
 
-#### \* onProgress
+#### • onProgress
 
-#### \* onSuccess
+#### • onSuccess
 
-#### \* wait
+#### • wait
 
 #### `defaultValues: DefaultValue | () => TDefaultValue`
 
@@ -127,21 +127,21 @@ Fetching data in the form of an object.
 
 The return from `useQueryDebounce` is as follows:
 
-#### \* getValues
+#### • getValues
 
-#### \* getValidValues
+#### • getValidValues
 
-#### \* setValue
+#### • setValue
 
-#### \* setBulkValues
+#### • setBulkValues
 
-#### \* clearValues
+#### • clearValues
 
-#### \* register
+#### • register
 
-#### \* watch
+#### • watch
 
-#### \* reset
+#### • reset
 
 ---
 
