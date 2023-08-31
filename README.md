@@ -75,21 +75,20 @@ Query Debounce is a custom hook for creating debounced states.
 
 The options for `useQueryDebounce` are as follows:
 
-- defaultValues
+<span style="font-weight:700;font-size:20px">
+defaultValues
+</span>
+<span style="font-weight:700;font-size:20px">
+onProgress
+</span>
+<span style="font-weight:700;font-size:20px">
+onSuccess
+</span>
+<span style="font-weight:700;font-size:20px">
+wait
+</span>
 
----
-
-- onProgress
-
----
-
-- onSuccess
-
----
-
-- wait
-
----
+<u/>
 
 #### `defaultValues: DefaultValue | () => TDefaultValue`
 
