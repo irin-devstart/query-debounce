@@ -1,6 +1,4 @@
-<div align="center">
   <img src="https://github.com/tuple-stack/query-debounce/blob/master/src/images/thumbnail.png" alt="Query debounce thumbnail"/>
-</div>
 
 [![npm](<https://img.shields.io/npm/v/query-debounce?style=for-the-badge&labelColor=hsla(0%2C%200%25%2C%2018%25%2C%201)&color=hsla(145%2C%2064%25%2C%2033%25%2C%201)>)](https://github.com/tuple-stack/query-debounce)
 [![licence](<https://img.shields.io/npm/l/query-debounce?style=for-the-badge&labelColor=hsla(0%2C%200%25%2C%2018%25%2C%201)&color=hsla(145%2C%2064%25%2C%2033%25%2C%201)>)](https://github.com/tuple-stack/query-debounce/blob/master/LICENSE)
