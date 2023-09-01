@@ -244,3 +244,5 @@ callback is used to fetch all values within the watch function.
 `reset` is used to reset the value to the default values.
 
 # Good luck, have fun!
+
+## Let me know if u have feedback, thanks
