@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://github.com/tuple-stack/query-debounce/blob/master/src/images/thumbnail.png" alt="Query debounce thumbnail"/>
+  <img src="https://github.com/tuple-stack/query-debounce/blob/master/src/images/query-debounce.png" alt="Query debounce thumbnail"/>
 </div>
 
 <div align="center">
