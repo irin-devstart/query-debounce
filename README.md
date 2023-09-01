@@ -1,12 +1,15 @@
-# Query Debounce
+<div align="center">
+  <img src="https://github.com/tuple-stack/query-debounce/blob/master/src/images/thumbnail.png" alt="Query debounce thumbnail"/>
+</div>
 
-Query Debounce is a custom hook designed to facilitate the management of multiple inputs that can be debounced in the form of an object, making it easier to manage numerous query parameters to avoid unnecessary repeated calls to the server (API).
-
-<img src="https://github.com/tuple-stack/query-debounce/blob/master/src/images/thumbnail.png"/>
 [![npm](<https://img.shields.io/npm/v/query-debounce?style=for-the-badge&labelColor=hsla(0%2C%200%25%2C%2018%25%2C%201)&color=hsla(145%2C%2064%25%2C%2033%25%2C%201)>)](https://github.com/tuple-stack/query-debounce)
 [![licence](<https://img.shields.io/npm/l/query-debounce?style=for-the-badge&labelColor=hsla(0%2C%200%25%2C%2018%25%2C%201)&color=hsla(145%2C%2064%25%2C%2033%25%2C%201)>)](https://github.com/tuple-stack/query-debounce/blob/master/LICENSE)
 [![minzip](<https://img.shields.io/bundlephobia/minzip/query-debounce?style=for-the-badge&labelColor=hsla(0%2C%200%25%2C%2018%25%2C%201)&color=hsla(145%2C%2064%25%2C%2033%25%2C%201)>)](https://www.npmjs.com/package/query-debounce)
 [![npm downloads](<https://img.shields.io/npm/dm/query-debounce?style=for-the-badge&logo=npm&labelColor=hsla(0%2C%200%25%2C%2018%25%2C%201)&color=hsla(145%2C%2064%25%2C%2033%25%2C%201)>)](https://www.npmjs.com/package/query-debounce)
+
+# Query Debounce
+
+Query Debounce is a custom hook designed to facilitate the management of multiple inputs that can be debounced in the form of an object, making it easier to manage numerous query parameters to avoid unnecessary repeated calls to the server (API).
 
 ## Features
 
