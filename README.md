@@ -1,3 +1,5 @@
+![Query Debounce Thumbnail](https://github.com/tuple-stack/query-debounce/blob/master/src/images/thumbnail.png)
+
 # Query Debounce
 
 Query Debounce is a custom hook designed to facilitate the management of multiple inputs that can be debounced in the form of an object, making it easier to manage numerous query parameters to avoid unnecessary repeated calls to the server (API).
