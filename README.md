@@ -24,17 +24,19 @@ Query Debounce is a custom hook designed to facilitate the management of multipl
 
 ## Installation
 
+#### With npm
+
 ```
 npm install query-debounce
 ```
 
-or
+#### With yarn
 
 ```
 yarn add query-debounce
 ```
 
-or
+#### With pnpm
 
 ```
 pnpm add query-debounce
