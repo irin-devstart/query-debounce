@@ -1,4 +1,4 @@
-![Query Debounce Thumbnail](https://github.com/tuple-stack/query-debounce/blob/master/src/images/thumbnail.png)
+<img src="https://github.com/tuple-stack/query-debounce/blob/master/src/images/thumbnail.png"/>
 
 # Query Debounce
 
