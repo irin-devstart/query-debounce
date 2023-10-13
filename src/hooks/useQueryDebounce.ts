@@ -15,6 +15,10 @@ const useQueryDebounce = <TDefaultValue = unknown>(
     defaultValues ?? {}
   );
 
+  const [unbouncedValue, setUnbouncedValue] = useState<Partial<TDefaultValue>>(
+    defaultValues ?? {}
+  );
+
   const timeout = useRef<ReturnType<typeof setTimeout>>();
 
   const debouce = useCallback(
@@ -35,6 +39,9 @@ const useQueryDebounce = <TDefaultValue = unknown>(
     ) => {
       options?.onProgress?.("loading", options?.wait ?? 500);
       callback?.(state);
+      setUnbouncedValue((prev) => {
+        return { ...prev, [key]: value };
+      });
       debouce(() => {
         setState((prev) => {
           return { ...prev, [key]: value };
@@ -53,6 +60,9 @@ const useQueryDebounce = <TDefaultValue = unknown>(
     ) => {
       options?.onProgress?.("loading", options?.wait ?? 500);
       callback?.(state);
+      setUnbouncedValue((prev) => {
+        return { ...prev, ...values };
+      });
       debouce(() => {
         setState((prev) => {
           return { ...prev, ...values };
@@ -89,6 +99,10 @@ const useQueryDebounce = <TDefaultValue = unknown>(
     return state;
   }, [state]);
 
+  const getUnbouncedValue = useCallback(() => {
+    return unbouncedValue;
+  }, [unbouncedValue]);
+
   const getValidValues = useCallback(() => {
     let tempValues: Partial<TDefaultValue> = {};
     Object.keys(state).forEach((key) => {
@@ -122,6 +136,7 @@ const useQueryDebounce = <TDefaultValue = unknown>(
   return {
     getValues,
     getValidValues,
+    getUnbouncedValue,
     setValue,
     setBulkValues,
     reset,

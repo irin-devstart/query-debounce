@@ -8,24 +8,54 @@ export interface UseQueryDebounceOptions<TDefaultValue> {
 }
 
 export interface TUseQueryDebounceReturn<TDefaultValue> {
-  getValues: () => Partial<TDefaultValue>;
-  getValidValues: () => Partial<TDefaultValue>;
-  setValue: (
+  getValues: UseQueryDebounceGetValues<TDefaultValue>;
+  getValidValues: UseQueryDebounceGetUnbouncedValue<TDefaultValue>;
+  getUnbouncedValue: UseQueryDebounceGetValidValues<TDefaultValue>;
+  setValue: UseQueryDebounceSetValue<TDefaultValue>;
+  setBulkValues: UseQueryDebounceSetBulkValues<TDefaultValue>;
+  clearValues: UseQueryDebounceClearValues<TDefaultValue>;
+  register: UseQueryDebounceRegister<TDefaultValue>;
+  watch: UseQueryDebounceWatch<TDefaultValue>;
+  reset: UseQueryDebounceReset;
+}
+
+export interface UseQueryDebounceGetValues<TDefaultValue> {
+  (): Partial<TDefaultValue>;
+}
+
+export interface UseQueryDebounceGetUnbouncedValue<TDefaultValue> {
+  (): Partial<TDefaultValue>;
+}
+export interface UseQueryDebounceGetValidValues<TDefaultValue> {
+  (key: keyof TDefaultValue): Partial<TDefaultValue>;
+}
+export interface UseQueryDebounceSetValue<TDefaultValue> {
+  (
     key: keyof TDefaultValue,
     value: Partial<TDefaultValue>[keyof TDefaultValue],
     callback?: (data: Partial<TDefaultValue>) => void
-  ) => void;
-  setBulkValues: (
+  ): void;
+}
+export interface UseQueryDebounceSetBulkValues<TDefaultValue> {
+  (
     values: Partial<TDefaultValue>,
     callback?: ((value: Partial<TDefaultValue>) => void) | undefined
-  ) => void;
-  clearValues: (key: keyof TDefaultValue | Array<keyof TDefaultValue>) => void;
-  register: (key: keyof TDefaultValue) => {
+  ): void;
+}
+export interface UseQueryDebounceClearValues<TDefaultValue> {
+  (key: keyof TDefaultValue | Array<keyof TDefaultValue>): void;
+}
+export interface UseQueryDebounceRegister<TDefaultValue> {
+  (key: keyof TDefaultValue): {
     onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   };
-  watch: (
+}
+export interface UseQueryDebounceWatch<TDefaultValue> {
+  (
     key: keyof TDefaultValue,
     calback?: ((data: Partial<TDefaultValue>) => void) | undefined
-  ) => Partial<TDefaultValue>[keyof TDefaultValue];
-  reset: () => void;
+  ): Partial<TDefaultValue>[keyof TDefaultValue];
+}
+export interface UseQueryDebounceReset {
+  (): void;
 }

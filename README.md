@@ -141,6 +141,8 @@ The return from `useQueryDebounce` is as follows:
 
 #### • getValidValues
 
+#### • getUnbouncedValue
+
 #### • setValue
 
 #### • setBulkValues
@@ -164,6 +166,10 @@ The return from `useQueryDebounce` is as follows:
 #### `getValidValues: () => Partial<TDefaultValue>`
 
 `getValidValues` is used to fetch all valid values of the object.
+
+#### `getUnbouncedValue: () => Partial<TDefaultValue>`
+
+`getUnbouncedValue` is used to fetch all values without debounce of the object..
 
 ---
 

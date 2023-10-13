@@ -1,6 +1,6 @@
 {
   "name": "query-debounce",
-  "version": "2.2.4",
+  "version": "2.3.0",
   "private": false,
   "description": "Query Debounce is a custom hook designed to facilitate the management of multiple inputs that can be debounced",
   "main": "./dist/index.js",
@@ -19,6 +19,7 @@
     "params",
     "debounce",
     "query debounce",
+    "react debounce",
     "filter debounce",
     "query params debounce",
     "filter query params debounce"
