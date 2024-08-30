@@ -15,7 +15,7 @@ const useQueryDebounce = <TDefaultValue = unknown>(
     defaultValues ?? {}
   );
 
-  const [unbouncedValue, setUnbouncedValue] = useState<Partial<TDefaultValue>>(
+  const [actualValue, setActualValue] = useState<Partial<TDefaultValue>>(
     defaultValues ?? {}
   );
 
@@ -39,7 +39,7 @@ const useQueryDebounce = <TDefaultValue = unknown>(
     ) => {
       options?.onProgress?.("loading", options?.wait ?? 500);
       callback?.(state);
-      setUnbouncedValue((prev) => {
+      setActualValue((prev) => {
         return { ...prev, [key]: value };
       });
       debouce(() => {
@@ -60,7 +60,7 @@ const useQueryDebounce = <TDefaultValue = unknown>(
     ) => {
       options?.onProgress?.("loading", options?.wait ?? 500);
       callback?.(state);
-      setUnbouncedValue((prev) => {
+      setActualValue((prev) => {
         return { ...prev, ...values };
       });
       debouce(() => {
@@ -94,14 +94,21 @@ const useQueryDebounce = <TDefaultValue = unknown>(
     calback?.(state);
     return state[key];
   };
+  const actualWatch = (
+    key: keyof TDefaultValue,
+    calback?: (data: Partial<TDefaultValue>) => void
+  ) => {
+    calback?.(actualValue);
+    return actualValue[key];
+  };
 
   const getValues = useCallback(() => {
     return state;
   }, [state]);
 
-  const getUnbouncedValue = useCallback(() => {
-    return unbouncedValue;
-  }, [unbouncedValue]);
+  const getActualValues = useCallback(() => {
+    return actualValue;
+  }, [actualValue]);
 
   const getValidValues = useCallback(() => {
     let tempValues: Partial<TDefaultValue> = {};
@@ -136,12 +143,13 @@ const useQueryDebounce = <TDefaultValue = unknown>(
   return {
     getValues,
     getValidValues,
-    getUnbouncedValue,
+    getActualValues,
     setValue,
     setBulkValues,
     reset,
     register,
     watch,
+    actualWatch,
     clearValues,
   };
 };

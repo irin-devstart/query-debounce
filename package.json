@@ -1,6 +1,6 @@
 {
   "name": "query-debounce",
-  "version": "2.3.0",
+  "version": "2.4.2",
   "private": false,
   "description": "Query Debounce is a custom hook designed to facilitate the management of multiple inputs that can be debounced",
   "main": "./dist/index.js",
@@ -24,7 +24,7 @@
     "query params debounce",
     "filter query params debounce"
   ],
-  "author": "Email <tuple.stack@gmail.com>",
+  "author": "Email <irin.devstart@gmail.com>",
   "license": "MIT",
   "devDependencies": {
     "@types/react": "^18.2.20",
@@ -38,7 +38,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tuple-stack/query-debounce.git"
+    "url": "git+https://github.com/irin-devstart/query-debounce.git"
   },
   "files": [
     "dist",

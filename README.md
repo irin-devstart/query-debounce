@@ -20,7 +20,7 @@ Query Debounce is a custom hook designed to facilitate the management of multipl
 - Facilitates debouncing for multiple inputs (state object).
 - Can retrieve values without debounce (callback on set value).
 - Provides progress status for change, loading, or success.
-- Returns are available for set, set bulk, get, watch, clear, and register.
+- Returns are available for set value, set value bulk, get, watch, actual aatch, clear, and register.
 
 ## Installation
 
@@ -141,7 +141,7 @@ The return from `useQueryDebounce` is as follows:
 
 #### • getValidValues
 
-#### • getUnbouncedValue
+#### • getActualValues
 
 #### • setValue
 
@@ -150,6 +150,8 @@ The return from `useQueryDebounce` is as follows:
 #### • clearValues
 
 #### • register
+
+#### • actualWatch
 
 #### • watch
 
@@ -167,7 +169,7 @@ The return from `useQueryDebounce` is as follows:
 
 `getValidValues` is used to fetch all valid values of the object.
 
-#### `getUnbouncedValue: () => Partial<TDefaultValue>`
+#### `getActualValues: () => Partial<TDefaultValue>`
 
 `getUnbouncedValue` is used to fetch all values without debounce of the object..
 
@@ -238,6 +240,10 @@ key is the key of the object you want to register.
 onChange is used to perform a value change
 
 ---
+
+#### `actualWatch: (key, calback) => void`
+
+watch is used to fetch actual values based on the key.
 
 #### `watch: (key, calback) => void`
 

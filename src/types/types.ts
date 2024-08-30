@@ -1,7 +1,5 @@
 export interface UseQueryDebounceOptions<TDefaultValue> {
-  defaultValues:
-    | Partial<TDefaultValue>
-    | (() => Partial<TDefaultValue> | undefined);
+  defaultValues: Partial<TDefaultValue> | (() => Partial<TDefaultValue>);
   onSuccess: (data: Partial<TDefaultValue>) => void;
   onProgress: (status?: "loading" | "success", totalTimer?: number) => void;
   wait: number;
@@ -9,13 +7,14 @@ export interface UseQueryDebounceOptions<TDefaultValue> {
 
 export interface TUseQueryDebounceReturn<TDefaultValue> {
   getValues: UseQueryDebounceGetValues<TDefaultValue>;
-  getValidValues: UseQueryDebounceGetUnbouncedValue<TDefaultValue>;
-  getUnbouncedValue: UseQueryDebounceGetValidValues<TDefaultValue>;
+  getValidValues: UseQueryDebounceGetValidValues<TDefaultValue>;
+  getActualValues: UseQueryDebounceGetActualValues<TDefaultValue>;
   setValue: UseQueryDebounceSetValue<TDefaultValue>;
   setBulkValues: UseQueryDebounceSetBulkValues<TDefaultValue>;
   clearValues: UseQueryDebounceClearValues<TDefaultValue>;
   register: UseQueryDebounceRegister<TDefaultValue>;
   watch: UseQueryDebounceWatch<TDefaultValue>;
+  actualWatch: UseQueryDebounceActualWatch<TDefaultValue>;
   reset: UseQueryDebounceReset;
 }
 
@@ -23,11 +22,11 @@ export interface UseQueryDebounceGetValues<TDefaultValue> {
   (): Partial<TDefaultValue>;
 }
 
-export interface UseQueryDebounceGetUnbouncedValue<TDefaultValue> {
+export interface UseQueryDebounceGetActualValues<TDefaultValue> {
   (): Partial<TDefaultValue>;
 }
 export interface UseQueryDebounceGetValidValues<TDefaultValue> {
-  (key: keyof TDefaultValue): Partial<TDefaultValue>;
+  (): Partial<TDefaultValue>;
 }
 export interface UseQueryDebounceSetValue<TDefaultValue> {
   (
@@ -39,7 +38,7 @@ export interface UseQueryDebounceSetValue<TDefaultValue> {
 export interface UseQueryDebounceSetBulkValues<TDefaultValue> {
   (
     values: Partial<TDefaultValue>,
-    callback?: ((value: Partial<TDefaultValue>) => void) | undefined
+    callback?: (value: Partial<TDefaultValue>) => void
   ): void;
 }
 export interface UseQueryDebounceClearValues<TDefaultValue> {
@@ -53,7 +52,13 @@ export interface UseQueryDebounceRegister<TDefaultValue> {
 export interface UseQueryDebounceWatch<TDefaultValue> {
   (
     key: keyof TDefaultValue,
-    calback?: ((data: Partial<TDefaultValue>) => void) | undefined
+    calback?: (data: Partial<TDefaultValue>) => void
+  ): Partial<TDefaultValue>[keyof TDefaultValue];
+}
+export interface UseQueryDebounceActualWatch<TDefaultValue> {
+  (
+    key: keyof TDefaultValue,
+    calback?: (data: Partial<TDefaultValue>) => void
   ): Partial<TDefaultValue>[keyof TDefaultValue];
 }
 export interface UseQueryDebounceReset {
